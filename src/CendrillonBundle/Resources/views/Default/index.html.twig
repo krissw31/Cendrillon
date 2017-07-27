@@ -1,0 +1,478 @@
+{% extends "base.html.twig" %}
+ {% block body %}
+
+
+     <div class="container-fluid" id="main">
+         <div class="row row-offcanvas row-offcanvas-left">
+             <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
+                 <ul class="nav flex-column pl-1">
+                     <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#submenu1" data-toggle="collapse"
+                            data-target="#submenu1">Catégories▾</a>
+                         <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
+                             <li class="nav-item"><a class="nav-link" href="#features">Utilisateurs connectés</a></li>
+                             <li class="nav-item"><a class="nav-link" href="">Utilisateurs inscrits</a></li>
+                         </ul>
+                     </li>
+                     <li class="nav-item">
+                         <a class="nav-link" href="#submenu2" data-toggle="collapse"
+                            data-target="#submenu2">Modération▾</a>
+                         <ul class="list-unstyled flex-column pl-3 collapse" id="submenu2" aria-expanded="false">
+                             <li class="nav-item"><a class="nav-link" href="#moderation">Gestion des messages</a></li>
+                             <li class="nav-item"><a class="nav-link" href="">Gestion des utilisateurs</a></li>
+                         </ul>
+                     </li>
+                     <li class="nav-item"><a class="nav-link" href="#">Tchat</a></li>
+
+
+                 </ul>
+             </div>
+             <!--/col-->
+
+             <div class="col-md-9 col-lg-10 main">
+
+
+                 <!--toggle sidebar button
+                 <p class="hidden-md-up">
+                     <button type="button" class="btn btn-primary-outline btn-sm" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i> Menu</button>
+                 </p>-->
+
+                 <h1 class="sub-header mt-5">
+                     Accueil
+                 </h1>
+                 <p class="lead hidden-xs-down">Informations générales du site Kurbys</p>
+
+                 <!--  <div class="alert alert-warning fade collapse" role="alert" id="myAlert">
+                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                           <span aria-hidden="true">×</span>
+                           <span class="sr-only">Close</span>
+                       </button>
+                       <strong>Holy guacamole!</strong> It's free.. this is an example theme.
+                   </div>-->
+
+                 <div class="row mb-3">
+
+
+                     <div class="col-xl-4 col-lg-6">
+                          <div class="card card-inverse card-success">
+                             <div class="card-block bg-success">
+                                 <div class="rotate">
+                                     <i class="fa fa-user fa-5x"></i>
+                                    </div>
+                                     <h6 class="text-uppercase">Utilisateurs inscrits</h6>
+                                    <h1 class="display-1">{{ nb_user }}</h1>
+
+                             </div>
+                         </div>
+
+
+                        <!-- <div class="panel panel-success">
+                             <div class="panel-heading">
+                                 Green Panel
+                             </div>
+                             <div class="panel-body">
+                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est
+                                     vitae
+                                     ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla
+                                     augue.</p>
+                             </div>
+                             <div class="panel-footer">
+                                 Panel Footer
+                             </div>
+                         </div>-->
+                     </div>
+
+
+                     <div class="col-xl-4 col-lg-6">
+                         <div class="card card-inverse card-danger">
+                             <div class="card-block bg-danger">
+                                 <div class="rotate">
+                                     <i class="fa fa-comments fa-5x"></i>
+                                 </div>
+                                 <h6 class="text-uppercase">Messages postés</h6>
+                                 <h1 class="display-1">{{ nb_post }}</h1>
+                             </div>
+                         </div>
+                     </div>
+                     <!--  <div class="col-xl-3 col-lg-6">
+                         <div class="panel panel-primary">
+                             <!--  <div class="panel-heading">
+                                 <div class="row">
+                                     <div class="col-xs-3">
+                                         <i class="fa fa-comments fa-5x"></i>
+                                     </div>
+                                     <div class="col-xs-9 text-right">
+                                         <div class="huge">26</div>
+                                         <div>New Comments!</div>
+                                     </div>
+                                 </div>
+                             </div>
+                             <a href="#">
+                                 <div class="panel-footer">
+                                     <span class="pull-left">View Details</span>
+                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                     <div class="clearfix"></div>
+                                 </div>
+                             </a>
+                         </div>
+                     </div>-->
+
+
+                     <div class="col-xl-4 col-lg-6">
+                         <div class="card card-inverse card-warning">
+                             <div class="card-block bg-warning">
+                                 <div class="rotate">
+                                     <i class="fa fa-user-md fa-5x"></i>
+                                 </div>
+                                 <h6 class="text-uppercase">Conseillers inscrits</h6>
+                                 <h1 class="display-1">{{ conseiller_nb }}</h1>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                 <!--/row-->
+
+                 <hr>
+                 <div class="row placeholders mb-3">
+                     <!--<div class="col-6 col-sm-3 placeholder text-center">
+                         <img src="//placehold.it/200/dddddd/fff?text=1" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">
+                         <h4></h4>
+                         <span class="text-muted">Utilisateurs filles:</span>
+                     </div> -->
+                     <!-- <div class="en agn">
+
+                          <strong class="axn">Traffic</strong>
+                          <div class="azy aim"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                              <canvas class="bra js-chart-drawn" width="166" height="166" data-chart="doughnut" data-dataset="[230, 130]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']" style="display: block; width: 166px; height: 166px;">
+                              </canvas
+                          </div><h4>New vs Returning</h4>
+                      </div>-->
+
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class="fa fa-female fa-3x"></i>
+                         <h4>utilisateurs filles : {{ fille_user }}</h4>
+                         <!--  <span class="text-muted">UI / UX oriented</span> -->
+                     </div>
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class=" fa fa-male fa-3x"></i>
+                         <h4>utilisateurs garçons : {{ garcon_user }}</h4>
+
+                     </div>
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class=" fa fa-female fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
+                         <h4>Messages postés par filles :{{ nb_postsF}} </h4>
+
+                     </div>
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class=" fa fa-male fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
+                         <h4>Messages postés par garçons :{{ nb_postsG }} </h4>
+
+                     </div>
+
+                 </div>
+
+
+                 <hr>
+
+                    <div class="row my-4">
+                       <!-- <div class="col-lg-4 col-md-4">
+                            <div class="card">
+                                <img class="card-img-top img-fluid" src="//placehold.it/740x180/bbb/fff?text=..." alt="Card image cap">
+                                <div class="card-block">
+                                    <h4 class="card-title">Layouts</h4>
+                                    <p class="card-text">Flexbox provides simpler, more flexible layout options like vertical centering.</p>
+                                    <a href="#" class="btn btn-primary">Button</a>
+                                </div>
+                            </div>
+                            <div class="card card-inverse bg-inverse mt-3">
+                                <div class="card-block">
+                                    <h3 class="card-title">Flexbox</h3>
+                                    <p class="card-text">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
+                                    <a href="#" class="btn btn-outline-secondary">Outline</a>
+                                </div>
+                            </div>
+                        </div>-->
+                        <div class="col-lg-12 col-md-12">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead class="thead-inverse">
+                                    <tr>
+                                        <th>pseudo</th>
+                                        <th>sexe</th>
+                                        <th>age</th>
+                                        <th>enregistrer</th>
+                                        <th>presentation</th>
+
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for users in users %}
+                                    <tr>
+                                        <td>{{ users.userLogin()}}</td>
+                                        <td>{{ users.userSexe }}</td>
+                                        <td>{{ users.age }}</td>
+                                        <td>{{ users.userRegistered |date('d.m.Y')}}</td>
+                                        <td>{{ users.presentation  }}</td>
+                                    </tr>
+                                    {% endfor %}
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                 <!--/row-->
+
+
+                 <a id="more"></a>
+                 <a id="features"></a>
+
+                 <!--/////MESSAGES/////////////-->
+
+                 <hr>
+                 <h1 class="sub-header mt-5">
+                     Messages
+                 </h1>
+                 <p class="lead hidden-xs-down">Nombre de posts dans chaque catégorie</p>
+
+                 <div class="mb-3">
+                     <div class="card-deck">
+                         <div class="card card-inverse card-success text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Catégorie amitié :  {{ nb_posts_amitie }}</p>
+                                     <footer>
+                                              <a  href="/posts" class="btn btn-success link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                         <div class="card card-inverse card-danger text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Catégorie amour : {{ nb_posts_amour }}</p>
+                                     <footer>
+                                         <a  href="/posts#amour" class="btn btn-danger link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                         <div class="card card-inverse card-warning text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Catégorie confiance : {{ nb_posts_confiance }}</p>
+                                     <footer>
+                                         <a  href="/posts#confiance" class="btn btn-warning link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                         <div class="card card-inverse card-info text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Catégorie sexo : {{ nb_posts_sexo }}</p>
+                                     <footer>
+                                         <a  href="/posts#sexo" class="btn btn-info link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+                  <div class="row my-4">
+                      <!--   <div class="col-lg-6 col-md-4">
+                     <div class="panel panel-primary">
+                         <div class="panel-heading">
+
+                            <h2>nombre de posts {{ nb_posts }} et {{ nb_posts_amitie }}</h2>
+                             <h2>pourcentage amitie  {{ pctamitie }}</h2>
+                             <h2>nombre modulo {{ pnbamitie }}</h2>
+                             <h2>nombre de posts {{ nb_posts }} et {{ nb_posts_confiance }}</h2>
+                             <h2>pourcentage confiance {{ pctconfiance }}</h2>
+                             <h2>nombre confiance {{ pnbconfiance }}</h2>
+                             <h2>pourcentage amour {{ pctamour }}</h2>
+                             <h2>nombre modulo {{ pnbamour }}</h2>
+                             <h2>pourcentage sexo {{ pctsexo }}</h2>
+                             <h2>nombre posts sexo {{ pnbsexo }}</h2>
+
+                             <div class="text-right">
+                                 <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
+                             </div>
+                         </div>
+                     </div>
+
+                 </div>-->
+                     <div class="col-lg-6 col-md-4">
+
+                 <div class="progress">
+                     <div class="progress-bar  progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctamitie }}%">
+
+                     </div>
+                     <hr>
+                 </div>
+                 <div class="progress">
+                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctsexo }}%">
+
+                     </div>
+                     <hr>
+                 </div>
+                 <div class="progress">
+                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctconfiance }}%">
+
+                     </div>
+                     <hr>
+                 </div>
+                 <div class="progress">
+                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctamour }}%">
+
+                     </div>
+                     <hr>
+                 </div>
+                     </div>
+                 </div>
+
+
+
+                 <!--/row-->
+
+
+
+                 <a id="flexbox"></a>
+
+                 <p class="lead hidden-xs-down">Derniers messages postés</p>
+<!-- Ajout d'un scroll-->
+                 <div class="row my-4">
+                 <div class="col-lg-12 col-md-12">
+                     <div class="table-responsive">
+                         <table class="table table-striped">
+                             <thead class="thead-inverse">
+                             <tr>
+                                 <th>date</th>
+                                <!-- <th>auteur</th>-->
+                                 <th>titre</th>
+                                 <th>contenu</th>
+                                 <th>catégorie</th>
+
+
+                             </tr>
+                             </thead>
+                             <tbody>
+                             {% for posts in posts %}
+                                 <tr>
+                                     <td>{{ posts.postDate |date('d.m.Y')}}</td>
+                              <!--       <td></td> -->
+                                     <td>{{ posts.postTitle }}</td>
+                                     <td>{{ posts.postContent}}</td>
+                                     <td>{{ posts.categorie  }}</td>
+                                 </tr>
+                             {% endfor %}
+
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+
+
+                 <hr>
+
+
+                 <a id="moderation"></a>
+                 <h2 class="mt-5">Nombre de commentaires </h2>
+                 <h6>{{ nbComment }}</h6>
+
+                 <div class="card-columns mb-3">
+                     <div class="card">
+                         <img class="card-img-top img-fluid" src="//placehold.it/600x200/444/fff?text=Modération"
+                              alt="Card image cap">
+                         <div class="card-block">
+
+                             <div class="card">
+                                 <div class="card-block">
+                                     <ul class="list-unstyled">
+                                         <li class="text-capitalize"><code class="text-lowercase">text-capitalize</code>
+                                             Capitalize each word
+                                         </li>
+                                         <li class="text-uppercase"><code class="text-lowercase">text-uppercase</code>
+                                             Uppercase text
+                                         </li>
+                                         <li class="text-success"><code>text-success</code> Contextual colors for text
+                                         </li>
+                                         <li><code>text-muted</code> <span class="text-muted">
+                                            <td><br>{{ nbCommentsWomen }} and {{ nbCommentsMen }}
+
+                                            </td></span></li>
+                                         <li><code>text-info</code> <span class="text-muted">Info text color</span></li>
+                                         <li><code>text-danger</code> <span class="text-muted">Danger text color</span>
+                                         </li>
+                                         <li><code>text-warning</code> <span
+                                                     class="text-muted">Warning text color</span>
+                                         </li>
+                                         <li><code>text-primary</code> <span
+                                                     class="text-primary">Primary text color</span>
+                                         </li>
+                                     </ul>
+                                 </div>
+                             </div>
+                             <div class="card card-block">
+                                 <h4 class="card-title">Heading</h4>
+                                 <p class="card-text">So now that you've seen some of what Bootstrap 4 has to offer, are
+                                     you
+                                     going to give it a try?</p>
+                                 <p class="card-text">
+                                     <small class="text-muted">Last updated 12 mins ago</small>
+                                 </p>
+                             </div>
+                         </div>
+
+                         <!--/card-columns-->
+
+                         <a id="layouts"></a>
+
+
+                         <hr>
+
+
+                         <div class="clearfix"></div>
+
+
+                     </div><!--/row-->
+
+
+                 </div>
+                 <h6>Gestion des utilisateurs</h6>
+
+                 <!--/main col-->
+             </div>
+
+
+         </div>
+         <!--/.container-->
+         <footer class="container-fluid">
+             <p class="text-right small">©2016-2017 Company</p>
+         </footer>
+
+
+
+         <!-- Modal -->
+
+
+         </div>
+        <!-- <div id="myfirstchart" style="height: 250px;background-color: #5eb5e0" ></div>-->
+
+
+
+
+
+
+
+ {% endblock %}
+{% block javascripts %}
+
+
+{% endblock javascripts %}
+
+
+

@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+ {% block body %}
+     <div class="col-sm-8" id="post-container">
+     <h2>{{ post.postTitle }}<small>|{{ post.postDate|date("Y m d") }}</small></h2>
+     {{ post.postContent }}
+
+
+
+     {{ form_start(form,{'attr':{"novalidate":"novalidate"}}) }}
+     {{ form_widget(form) }}
+     {{ form_end(form) }}
+     </div>
+
+
+ {% endblock %}

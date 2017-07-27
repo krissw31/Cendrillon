@@ -1,0 +1,188 @@
+{% extends "base.html.twig" %}
+ {% block body %}
+
+
+<div class="container">
+
+     <h2>Messages dans la catégorie amitié</h2>
+
+
+<div class="row my-4">
+    <div class="col-lg-12 col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead class="bg-success">
+                <tr>
+                    <th style="width:10%;">date</th>
+                    <!-- <th>auteur</th>-->
+                    <th style="width:10%;">titre</th>
+                    <th style="width: 50%;">contenu</th>
+                    <th style="width: 10%;">modifier</th>
+                    <th style="width: 10%;">supprimer</th>
+                    <th style="width: 10%;">commentaires</th>
+
+
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for posts_amitie in posts_amitie %}
+                    <tr>
+                        <td>{{ posts_amitie.postDate |date('d/m/Y')}}</td>
+                        <!--       <td>nom de l'auteur</td> -->
+                        <td>{{ posts_amitie.postTitle }}</td>
+                        <td>{{ posts_amitie.postContent}}</td>
+                        <td><a href={{ path('post.edit',{"id":posts_amitie.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
+                        <td><a href={{ path('post.delete',{"id":posts_amitie.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
+                        <td><a href=""><input class="btn btn-primary " type="button" value="commentaires"></a></td>
+
+
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    <hr>
+    <a id="amour"></a>
+    <h2>Messages dans la catégorie amour</h2>
+    <div class="row my-4">
+        <div class="col-lg-12 col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="bg-danger">
+                    <tr>
+                        <th>date</th>
+                        <!-- <th>auteur</th>-->
+                        <th>titre</th>
+                        <th>contenu</th>
+                        <th>modifier</th>
+                        <th>supprimer</th>
+                        <th>commentaires</th>
+
+
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for posts_amour in  posts_amour %}
+                        <tr>
+                            <td>{{  posts_amour.postDate |date('d/m/Y')}}</td>
+                            <!--       <td>nom de l'auteur</td> -->
+                            <td>{{  posts_amour.postTitle }}</td>
+                            <td>{{  posts_amour.postContent}}</td>
+                            <td><a href={{ path('post.edit',{"id":posts_amour.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
+                            <td><a href={{ path('post.delete',{"id":posts_amour.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
+                            <td><input class="btn btn-primary " type="button" value="voir"></td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a id="more"></a>
+
+    <hr>
+    <a id="confiance"></a>
+    <h2>Messages dans la catégorie confiance</h2>
+    <div class="row my-4">
+        <div class="col-lg-12 col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="bg-warning">
+                    <tr>
+                        <th>date</th>
+                        <!-- <th>auteur</th>-->
+                        <th>titre</th>
+                        <th>contenu</th>
+                        <th>modifier</th>
+                        <th>supprimer</th>
+                        <th>commentaires</th>
+
+
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% for posts_confiance in  posts_confiance %}
+                        <tr>
+                            <td>{{  posts_confiance.postDate |date('d/m/Y')}}</td>
+                            <!--       <td>nom de l'auteur</td> -->
+                            <td>{{  posts_confiance.postTitle }}</td>
+                            <td>{{  posts_confiance.postContent}}</td>
+                            <td><a href={{ path('post.edit',{"id":posts_confiance.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
+                            <td><a href={{ path('post.delete',{"id":posts_confiance.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
+                            <td><input class="btn btn-primary " type="button" value="voir"></td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <a id="more"></a>
+
+    <hr>
+    <a id="sexo"></a>
+    <h2>Messages dans la catégorie sexo</h2>
+    <div class="row my-4">
+        <div class="col-lg-12 col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead class="bg-info">
+                    <tr>
+                        <th>date</th>
+                        <!-- <th>auteur</th>-->
+                        <th>titre</th>
+                        <th>contenu</th>
+                        <th>modofier</th>
+                        <th>supprimer</th>
+                        <th>commentaires</th>
+                        <!--Pop UP
+
+                        <div id="dialog-confirm" title="Confirmation de la suppression" style="display:none;">
+                            <p>
+                                <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+                                Etes-vous sûr de vouloir supprimer cet élément ?
+                            </p>
+                        </div>-->
+
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for posts_sexo in  posts_sexo %}
+                        <tr>
+                            <td>{{  posts_sexo.postDate |date('d/m/Y')}}</td>
+                            <!--       <td>nom de l'auteur</td> -->
+                            <td>{{  posts_sexo.postTitle }}</td>
+                            <td>{{  posts_sexo.postContent}}</td>
+                            <td><a href={{ path('post.edit',{"id":posts_sexo.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
+                            <td><a href={{ path('post.delete',{"id":posts_sexo.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
+                            <td><input class="btn btn-primary " type="button" value="voir"></td>
+
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+ {% endblock %}
+

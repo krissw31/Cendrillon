@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+ {% block body %}
+
+     <div class="container-fluid" id="main">
+         <h2>Ages des utilisateurs :</h2>
+     <ul>
+     {% for age in ages %}
+       <li>
+           {{ age }}
+       </li>
+     {% endfor %}
+     </ul>
+         <h2>Moyenne d'âge des utilisateurs :</h2>
+         {{ ageMoyUsers }}
+         <h2>Moyenne d'âge des utilisateurs garçons :</h2>
+         {{ ageMoyMen }}
+         <h2>Moyenne d'âge des utilisateurs filles :</h2>
+         {{ ageMoyWomen }}
+
+     <h2>Ages des utilisateurs garçons:</h2>
+     <ul>
+         {% for age in agesmen %}
+             <li>
+                 {{ age }}
+             </li>
+          {% endfor %}
+     </ul>
+
+     <h2>Ages des utilisateurs filles:</h2>
+     <ul>
+         {% for age in ageswomen %}
+             <li>
+                 {{ age }}
+             </li>
+         {% endfor %}
+     </ul>
+
+      <h2>Ages des utilisateurs de la catégorie "amour":</h2>
+         <ul>
+             {% for  age in  agesCatAmour %}
+                 <li>
+                     {{  age }}
+                 </li>
+             {% endfor %}
+         </ul>
+         <h2>Ages des utilisateurs de la catégorie "amitié":</h2>
+         <ul>
+             {% for  age in  agesCatAmitie %}
+                 <li>
+                     {{  age }}
+                 </li>
+             {% endfor %}
+         </ul>
+         <h2>Ages des utilisateurs de la catégorie "confiance":</h2>
+         <ul>
+             {% for  age in  agesCatConfiance %}
+                 <li>
+                     {{  age }}
+                 </li>
+             {% endfor %}
+         </ul>
+         <h2>Ages des utilisateurs de la catégorie "sexo":</h2>
+         <ul>
+             {% for  age in  agesCatSexo %}
+                 <li>
+                     {{  age }}
+                 </li>
+             {% endfor %}
+         </ul>
+
+
+     </div>
+
+     {% endblock %}

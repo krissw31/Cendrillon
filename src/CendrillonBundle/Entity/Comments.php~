@@ -1,0 +1,64 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: krissw
+ * Date: 28/06/2017
+ * Time: 14:32
+ */
+
+namespace CendrillonBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="wp_cendrillon_6239_comments")
+ */
+class Comments // table d'un commentaire
+{
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="bigint")
+     */
+    private $comment_ID;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CendrillonBundle\Entity\Posts",inversedBy="comment",)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $comment_post; //identifiant du post sur lequel est le commentaire
+
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CendrillonBundle\Entity\User", inversedBy="comment")
+     */
+    private $comment_author;  //c'est l'identifiant de l'utilisateur qui a posté le commentaire.
+
+    /**
+     *
+     * @ORM\Column(type="bigint")
+     */
+    private $post_author_id; //identifiant de l'utilisateur qui a posté le post       ///// champs inutil, existe dans post.
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $comment_date; // date du commentaire
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $comment_content; // contenu du commentaire
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $read_; // boolean si le commentaire a été lu ou non
+
+
+
+
+
+}

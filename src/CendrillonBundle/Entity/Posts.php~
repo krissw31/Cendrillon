@@ -1,0 +1,76 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: krissw
+ * Date: 28/06/2017
+ * Time: 11:32
+ */
+
+namespace CendrillonBundle\Entity;
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="wp_cendrillon_6239_posts")
+ */
+class Posts //table des messages
+{
+    /**
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\Column(type="bigint")
+     */
+    private $id;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="CendrillonBundle\Entity\User", inversedBy="post")
+     */
+    private $post_author; //identifiant de l'utilisateur
+
+    /**
+     *@ORM\OneToMany(targetEntity="CendrillonBundle\Entity\Comments", mappedBy="comment_post",cascade={"remove"})
+     *
+     */
+    private $comment;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $post_date;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    private $post_content;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $post_title;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $read_;
+
+    /**
+     * @ORM\Column(type="string")
+     */
+    private $categorie;
+
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comment = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+
+
+}
