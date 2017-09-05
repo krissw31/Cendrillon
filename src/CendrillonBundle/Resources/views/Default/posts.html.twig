@@ -13,13 +13,13 @@
             <table class="table table-striped">
                 <thead class="bg-success">
                 <tr>
-                    <th style="width:10%;">date</th>
-                    <!-- <th>auteur</th>-->
-                    <th style="width:10%;">titre</th>
+                    <th style="width:9%;">date</th>
+                    <th style="width:9%;">auteur</th>
+                    <th style="width:9%;">titre</th>
                     <th style="width: 50%;">contenu</th>
-                    <th style="width: 10%;">modifier</th>
-                    <th style="width: 10%;">supprimer</th>
-                    <th style="width: 10%;">commentaires</th>
+                    <th style="width: 8%;">modifier</th>
+                    <th style="width: 8%;">supprimer</th>
+                    <th style="width: 7%;">commentaires</th>
 
 
 
@@ -29,12 +29,12 @@
                 {% for posts_amitie in posts_amitie %}
                     <tr>
                         <td>{{ posts_amitie.postDate |date('d/m/Y')}}</td>
-                        <!--       <td>nom de l'auteur</td> -->
+                               <td>{{ posts_amitie.postAuthor.userLogin }}</td>
                         <td>{{ posts_amitie.postTitle }}</td>
                         <td>{{ posts_amitie.postContent}}</td>
                         <td><a href={{ path('post.edit',{"id":posts_amitie.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
                         <td><a href={{ path('post.delete',{"id":posts_amitie.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
-                        <td><a href=""><input class="btn btn-primary " type="button" value="commentaires"></a></td>
+                        <td><a href={{ path('post.see',{"id":posts_amitie.id}) }}><input class="btn btn-primary " type="button" value="voir"></a></td>
 
 
                     </tr>
@@ -55,7 +55,7 @@
                     <thead class="bg-danger">
                     <tr>
                         <th>date</th>
-                        <!-- <th>auteur</th>-->
+                        <th>auteur</th>
                         <th>titre</th>
                         <th>contenu</th>
                         <th>modifier</th>
@@ -71,12 +71,12 @@
                     {% for posts_amour in  posts_amour %}
                         <tr>
                             <td>{{  posts_amour.postDate |date('d/m/Y')}}</td>
-                            <!--       <td>nom de l'auteur</td> -->
+                            <td>{{ posts_amour.postAuthor.userLogin }}</td>
                             <td>{{  posts_amour.postTitle }}</td>
                             <td>{{  posts_amour.postContent}}</td>
                             <td><a href={{ path('post.edit',{"id":posts_amour.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
                             <td><a href={{ path('post.delete',{"id":posts_amour.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
-                            <td><input class="btn btn-primary " type="button" value="voir"></td>
+                            <td><a href={{ path('post.see',{"id":posts_amour.id}) }}><input class="btn btn-primary " type="button" value="voir"></a></td>
 
                         </tr>
                     {% endfor %}
@@ -98,7 +98,7 @@
                     <thead class="bg-warning">
                     <tr>
                         <th>date</th>
-                        <!-- <th>auteur</th>-->
+                        <th>auteur</th>
                         <th>titre</th>
                         <th>contenu</th>
                         <th>modifier</th>
@@ -115,12 +115,12 @@
                     {% for posts_confiance in  posts_confiance %}
                         <tr>
                             <td>{{  posts_confiance.postDate |date('d/m/Y')}}</td>
-                            <!--       <td>nom de l'auteur</td> -->
+                            <td>{{ posts_confiance.postAuthor.userLogin }}</td>
                             <td>{{  posts_confiance.postTitle }}</td>
                             <td>{{  posts_confiance.postContent}}</td>
                             <td><a href={{ path('post.edit',{"id":posts_confiance.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
                             <td><a href={{ path('post.delete',{"id":posts_confiance.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
-                            <td><input class="btn btn-primary " type="button" value="voir"></td>
+                            <td><a href={{ path('post.see',{"id":posts_confiance.id})}}><input class="btn btn-primary " type="button" value="voir"></a></td>
 
                         </tr>
                     {% endfor %}
@@ -142,10 +142,10 @@
                     <thead class="bg-info">
                     <tr>
                         <th>date</th>
-                        <!-- <th>auteur</th>-->
+                        <th>auteur</th>
                         <th>titre</th>
                         <th>contenu</th>
-                        <th>modofier</th>
+                        <th>modifier</th>
                         <th>supprimer</th>
                         <th>commentaires</th>
                         <!--Pop UP
@@ -164,12 +164,12 @@
                     {% for posts_sexo in  posts_sexo %}
                         <tr>
                             <td>{{  posts_sexo.postDate |date('d/m/Y')}}</td>
-                            <!--       <td>nom de l'auteur</td> -->
+                            <td>{{ posts_sexo.postAuthor.userLogin }}</td>
                             <td>{{  posts_sexo.postTitle }}</td>
                             <td>{{  posts_sexo.postContent}}</td>
                             <td><a href={{ path('post.edit',{"id":posts_sexo.id}) }}><input class="btn btn-primary " type="button" value="editer"></a></td>
                             <td><a href={{ path('post.delete',{"id":posts_sexo.id})}} ><input class="btn btn-primary" type="reset" value="Supprimer"></a></td>
-                            <td><input class="btn btn-primary " type="button" value="voir"></td>
+                            <td><a href={{ path('post.see',{"id":posts_sexo.id})}}><input class="btn btn-primary " type="button" value="voir"></a></td>
 
                         </tr>
                     {% endfor %}

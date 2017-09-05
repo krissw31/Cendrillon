@@ -45,6 +45,8 @@ namespace CendrillonBundle\Controller;
 
 
 
+
+
             /**
              * @var $posts_amitie Posts
              *
@@ -84,7 +86,7 @@ namespace CendrillonBundle\Controller;
          * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
          */
        public function editPost(Posts $post, Request $request){
-//           dump($post);die();
+
            $form = $this->createForm(PostsType::class, $post); //l'instancier
 
            $form->handleRequest($request);  //persister l'objet
@@ -99,34 +101,35 @@ namespace CendrillonBundle\Controller;
 
 
        }
-//       /**
-//        * @Route(/post/voir/{id})
-//        *
-//        */
-//       public function  affichageComments(){
-//            $comments = $this->getDoctrine()->getRepository()find
-//       }
+
+        /**
+         * @Route("/post/see/{id}",name="post.see")
+         *
+         */
+        ////////// afficher tous les commentaires d'un post sur lequel on a cliqué////////////////////
+       public function  affichageCommentsPost(Posts $posts){
+
+           $commentsPost = $posts->getComment();
+           $commentsPostAuthor = $posts->getPostAuthor();
+           $commentsPostDate = $posts->getPostDate();
+           $commentsPostContent = $posts->getPostContent();
+          // dump($commentsPostContent);die();
+
+
+
+            return $this->render("CendrillonBundle:Default:comments.html.twig",["commentPost"=>$commentsPost,
+                "commentsPostAuthor"=>$commentsPostAuthor,
+                "commentsPostDate"=>$commentsPostDate,
+                "commentsPostContent"=>$commentsPostContent,
+
+               ]);
+       }
+       /////////////editer un commentaire à partir de la page précédente en cliquant //////////
+
+
+
 //
-////        /**
-////         * @Route("/post/edit/{id}", name="post.edit")
-//         * @param Posts $posts
-//         */
-//       public function  editPost(Posts $posts, Request $request){
-//           $form = $this->createForm(PageType::class, $posts);//l'instancier
-//
-//           $form->handleRequest($request);
-//
-//           if ($form->isSubmitted() && $form->isValid()) {
-//               //Persister l'objet
-//               $em = $this->getDoctrine()
-//                   ->getManager();
-//
-//               $em->flush();
-//               //rediriger vers la page d'accueil
-//               return $this->redirectToRoute("admin.index");
-//
-//           }
-//           return $this->render("@Blog/Admin/page-form.html.twig", ["form" => $form->createView(), "page" => $page]);
+////
 //
 //
 //       }

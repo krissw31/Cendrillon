@@ -255,6 +255,7 @@ class Posts //table des messages
     /**
      * Get comment
      *
+     *
      * @return \Doctrine\Common\Collections\Collection
      */
     public function getComment()

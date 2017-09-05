@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    <div class="container">
+
+        <h2>Utilisateurs inscrits:</h2>
+        <div class="row my-4">
+            <div class="col-lg-12 col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="bg-success">
+                        <tr>
+                            <th style="width:10%;">date</th>
+                            <th style="width:1%;">auteur</th>
+                            <th style="width:8%;">genre</th>
+                            <th style="width: 49%;">présentation</th>
+                            <th style="width: 8%;">âge</th>
+                            <th style="width: 5%;">online</th>
+                            <th style="width: 5%;">Avertissement</th>
+                            <th style="width: 5%;">Gestion</th>
+
+
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.userRegistered |date('d/m/Y') }}</td>
+                                <td>{{ user.userLogin }}</td>
+                                <td>{{ user.userSexe }}</td>
+                                <td>{{ user.presentation }}</td>
+                                <td>{{ user.age }}</td>
+                                <td>{{ user.online }}</td>
+                                <td>{{ user.messageSignale }}</td>
+                                <td><a href="">Editer</a> </td>
+
+
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

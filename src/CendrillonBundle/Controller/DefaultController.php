@@ -2,21 +2,23 @@
 
 namespace CendrillonBundle\Controller;
 
+use CendrillonBundle\CendrillonBundle;
 use CendrillonBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
+
 class DefaultController extends Controller
 {
     const FILLE = "F";
-    const GARCON = "G";
+    const GARCON = "M";
     const AMOUR = "amour";
     const AMITIE = "amitié";
     const SEXO = "sexo";
     const CONFIANCE = "confiance";
 
     /**
-     * @Route("/index",name="homepage")
+     *@Route("/index",name="homepage")
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function indexAdminAction(){
@@ -54,31 +56,55 @@ class DefaultController extends Controller
         $comments = $this->getDoctrine()->getRepository("CendrillonBundle:Comments")->findAll();
         $nbComments=count($comments);
 
-        //NOMBRE DE COMMENTAIRES POSTES PAR GARCON OU FILLE
+
+        //////////////////////////NOMBRE DE COMMENTAIRES POSTES PAR GARCON OU FILLE/////////////////////////////////
         $nbCommentsMen = 0;
         $nbCommentsWomen = 0;
 
-        //on parcourt tous les messages stockés dans la tableau
+
+        //on parcourt tous les messages stockés dans le tableau
         foreach ($comments as $comment) {
 
             //on stock  les utilisateurs des messages
             $auteurComments = $comment->getCommentAuthor();
+            $auteurCommentsWomen =  $auteurComments->getUserSexe()===self::FILLE;
+            $nbCommentsWomen = count($auteurCommentsWomen);
 
-            /**
-             * @var $auteurComment User
-             */
-            //on parcourt tous les USER stockés dans la tableau
-            foreach ($auteurComments as $auteurComment) {
-                if ($auteurComment->getUserSexe() === self::GARCON) {
-                    // SI GARCON ON AJOUTE AU NOMBRE DE GARCON
-                    $nbCommentsMen++;
 
-                } else if ($auteurComment->getUserSexe() === self::FILLE) {
-                    // SI FILLE ON AJOUTE AU NOMBRE DE FILLE
-                    $nbCommentsWomen++;
+
                 }
-            }
+
+
+        foreach ($comments as $comment){
+            $auteurComments = $comment->getCommentAuthor();
+            $auteurCommentsMen = $auteurComments->getUserSexe()===self::GARCON;
+            $nbCommentsMen = count($auteurCommentsMen);
+
         }
+
+                /**
+                 * @var $auteurComment User
+                 */
+                //on parcourt tous les USER stockés dans la tableau
+                //foreach ($auteurComments as $auteurComment) {
+                // if ($auteurComment->getUserSexe() === self::GARCON) {
+                // SI GARCON ON AJOUTE AU NOMBRE DE GARCON
+                // $nbCommentsMen++;
+
+
+                // }
+                // else if ($auteurComment->getUserSexe() === self::FILLE) {
+                // SI FILLE ON AJOUTE AU NOMBRE DE FILLE
+                //   $nbCommentsWomen++;
+
+                // }
+                //}
+
+
+
+
+
+
 
         //Nombre de posts
         $posts = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findAll();
@@ -128,6 +154,56 @@ class DefaultController extends Controller
         $pnbsexo = $nb_posts_sexo/$nb_posts;
         $pctsexo = $pnbsexo*100;
 
+/////////////////////////////////nombre de commentaires pour chaque categorie/////////////////////////////////
+///
+        $posts_amitie = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie' => self::AMITIE]);
+        $posts_amour = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie'=> self::AMOUR]);
+        $posts_confiance = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie'=>self::CONFIANCE]);
+        $posts_sexo = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie'=>self::SEXO]);
+
+
+
+
+        //on declare le tableau des commentaires par categorie
+        $comments_amitie = array();
+        $comments_amour = array();
+        $comments_confiance = array();
+        $comments_sexo = array();
+
+        $nbComments_amitie = 0;
+        $nbComments_amour =0;
+        $nbComments_confiance = 0;
+        $nbComments_sexo = 0;
+
+        foreach ($posts_amitie as $post_amitie){
+            $comments_amitie = $post_amitie->getComment();
+            $nbComments_amitie = $nbComments_amitie + count($comments_amitie);
+
+        }
+
+
+
+        foreach ($posts_amour as $post_amour){
+            $comments_amour = $post_amour->getComment();
+            $nbComments_amour = count($comments_amour)+ ($nbComments_amour);
+
+
+        }
+
+        foreach ($posts_confiance as $post_confiance){
+            $comments_confiance = $post_confiance->getComment();
+            $nbComments_confiance =   count($comments_confiance) + $nbComments_confiance ;
+
+        }
+
+
+        foreach ($posts_sexo as $post_sexo){
+            $comments_sexo = $post_sexo->getComment();
+            $nbComments_sexo = $nbComments_sexo + count($comments_sexo);
+        }
+
+        $comments = $this->getDoctrine()->getRepository("CendrillonBundle:Comments")->findAll();
+
 
 
 
@@ -163,10 +239,17 @@ class DefaultController extends Controller
                 "pnbamour"=>$pnbamour,
                  "pctamour"=>$pctamour,
                 "pnbsexo"=>$pnbsexo,
-                "pctsexo"=>$pctsexo
+                "pctsexo"=>$pctsexo,
+                "nbComments_amitie"=>$nbComments_amitie,
+                "nbComments_amour"=>$nbComments_amour,
+                "nbComments_confiance"=>$nbComments_confiance,
+                "nbComments_sexo"=>$nbComments_sexo,
+                "comments_confiance"=>$comments_confiance,
+                "comments"=>$comments,
             ]);
 
     }
+
 
 
     /**
@@ -242,7 +325,7 @@ class DefaultController extends Controller
 
         foreach ($users as $user){
             $posts = $this->getDoctrine()->getRepository('CendrillonBundle:Posts')->findBy(["post_author"=>$user]);
-            $nb =  intval(count($posts));
+            $nb =  count($posts);
             $nb_posts = $nb_posts + $nb;
         }
         return $nb_posts;
@@ -250,12 +333,17 @@ class DefaultController extends Controller
     }
     public function nbrePostsCategory($categorie)
     {
-        $posts_categorie = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(["categorie"=>$categorie]);
-        $nb_posts_categorie = intval(count($posts_categorie));
-
-        return $nb_posts_categorie;
-
+        $posts_categorie = $this->getDoctrine()
+            ->getRepository("CendrillonBundle:Posts")
+            ->findBy(["categorie"=>$categorie]);
+        return count($posts_categorie);
     }
+
+   // public function nbreCommentsCategory($categorie)
+    //{
+      //  $comments_categorie = $this->
+    //}
+
 
     public function ageUsersSexe($user_sexe)
     {
@@ -268,6 +356,11 @@ class DefaultController extends Controller
         return $agesmen;
 
     }
+    ///////////////nombre de commentaires par categorie//////////
+
+
+
+
     public function nbreConnexionUsers(){
         //nombre des connexions par jour des utilisateurs.
 

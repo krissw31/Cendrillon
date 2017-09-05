@@ -11,19 +11,21 @@
                          <a class="nav-link" href="#submenu1" data-toggle="collapse"
                             data-target="#submenu1">Catégories▾</a>
                          <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                             <li class="nav-item"><a class="nav-link" href="#features">Utilisateurs connectés</a></li>
-                             <li class="nav-item"><a class="nav-link" href="">Utilisateurs inscrits</a></li>
+                             <li class="nav-item"><a class="nav-link" href="/posts#amitie">Amitié</a></li>
+                             <li class="nav-item"><a class="nav-link" href="/posts#amour">Amour</a></li>
+                             <li class="nav-item"><a class="nav-link" href="/posts#confiance">Confiance</a></li>
+                             <li class="nav-item"><a class="nav-link" href="/posts#sexo">Sexo</a></li>
                          </ul>
                      </li>
                      <li class="nav-item">
                          <a class="nav-link" href="#submenu2" data-toggle="collapse"
-                            data-target="#submenu2">Modération▾</a>
+                            data-target="#submenu2">Utilisateurs▾</a>
                          <ul class="list-unstyled flex-column pl-3 collapse" id="submenu2" aria-expanded="false">
-                             <li class="nav-item"><a class="nav-link" href="#moderation">Gestion des messages</a></li>
+                             <li class="nav-item"><a class="nav-link" href="#moderation">Gestion des posts</a></li>
                              <li class="nav-item"><a class="nav-link" href="">Gestion des utilisateurs</a></li>
                          </ul>
                      </li>
-                     <li class="nav-item"><a class="nav-link" href="#">Tchat</a></li>
+                     <li class="nav-item"><a class="nav-link" href="{{ path('chat') }}">Chat</a></li>
 
 
                  </ul>
@@ -95,28 +97,7 @@
                              </div>
                          </div>
                      </div>
-                     <!--  <div class="col-xl-3 col-lg-6">
-                         <div class="panel panel-primary">
-                             <!--  <div class="panel-heading">
-                                 <div class="row">
-                                     <div class="col-xs-3">
-                                         <i class="fa fa-comments fa-5x"></i>
-                                     </div>
-                                     <div class="col-xs-9 text-right">
-                                         <div class="huge">26</div>
-                                         <div>New Comments!</div>
-                                     </div>
-                                 </div>
-                             </div>
-                             <a href="#">
-                                 <div class="panel-footer">
-                                     <span class="pull-left">View Details</span>
-                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                     <div class="clearfix"></div>
-                                 </div>
-                             </a>
-                         </div>
-                     </div>-->
+
 
 
                      <div class="col-xl-4 col-lg-6">
@@ -135,19 +116,6 @@
 
                  <hr>
                  <div class="row placeholders mb-3">
-                     <!--<div class="col-6 col-sm-3 placeholder text-center">
-                         <img src="//placehold.it/200/dddddd/fff?text=1" class="mx-auto img-fluid rounded-circle" alt="Generic placeholder thumbnail">
-                         <h4></h4>
-                         <span class="text-muted">Utilisateurs filles:</span>
-                     </div> -->
-                     <!-- <div class="en agn">
-
-                          <strong class="axn">Traffic</strong>
-                          <div class="azy aim"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
-                              <canvas class="bra js-chart-drawn" width="166" height="166" data-chart="doughnut" data-dataset="[230, 130]" data-dataset-options="{ borderColor: '#252830', backgroundColor: ['#1ca8dd', '#1bc98e'] }" data-labels="['Returning', 'New']" style="display: block; width: 166px; height: 166px;">
-                              </canvas
-                          </div><h4>New vs Returning</h4>
-                      </div>-->
 
                      <div class="col-6 col-sm-3 placeholder text-center">
                          <i class="fa fa-female fa-3x"></i>
@@ -161,12 +129,12 @@
                      </div>
                      <div class="col-6 col-sm-3 placeholder text-center">
                          <i class=" fa fa-female fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
-                         <h4>Messages postés par filles :{{ nb_postsF}} </h4>
+                         <h4>Messages filles :{{ nb_postsF}} </h4>
 
                      </div>
                      <div class="col-6 col-sm-3 placeholder text-center">
                          <i class=" fa fa-male fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
-                         <h4>Messages postés par garçons :{{ nb_postsG }} </h4>
+                         <h4>Messages garçons :{{ nb_postsG }} </h4>
 
                      </div>
 
@@ -176,23 +144,7 @@
                  <hr>
 
                     <div class="row my-4">
-                       <!-- <div class="col-lg-4 col-md-4">
-                            <div class="card">
-                                <img class="card-img-top img-fluid" src="//placehold.it/740x180/bbb/fff?text=..." alt="Card image cap">
-                                <div class="card-block">
-                                    <h4 class="card-title">Layouts</h4>
-                                    <p class="card-text">Flexbox provides simpler, more flexible layout options like vertical centering.</p>
-                                    <a href="#" class="btn btn-primary">Button</a>
-                                </div>
-                            </div>
-                            <div class="card card-inverse bg-inverse mt-3">
-                                <div class="card-block">
-                                    <h3 class="card-title">Flexbox</h3>
-                                    <p class="card-text">Flexbox is now the default, and Bootstrap 4 supports SASS out of the box.</p>
-                                    <a href="#" class="btn btn-outline-secondary">Outline</a>
-                                </div>
-                            </div>
-                        </div>-->
+
                         <div class="col-lg-12 col-md-12">
                             <div class="table-responsive">
                                 <table class="table table-striped">
@@ -235,7 +187,7 @@
                  <h1 class="sub-header mt-5">
                      Messages
                  </h1>
-                 <p class="lead hidden-xs-down">Nombre de posts dans chaque catégorie</p>
+                 <p class="lead hidden-xs-down">Nombre de posts dans chaque catégorie:</p>
 
                  <div class="mb-3">
                      <div class="card-deck">
@@ -282,28 +234,7 @@
                      </div>
                  </div>
                   <div class="row my-4">
-                      <!--   <div class="col-lg-6 col-md-4">
-                     <div class="panel panel-primary">
-                         <div class="panel-heading">
 
-                            <h2>nombre de posts {{ nb_posts }} et {{ nb_posts_amitie }}</h2>
-                             <h2>pourcentage amitie  {{ pctamitie }}</h2>
-                             <h2>nombre modulo {{ pnbamitie }}</h2>
-                             <h2>nombre de posts {{ nb_posts }} et {{ nb_posts_confiance }}</h2>
-                             <h2>pourcentage confiance {{ pctconfiance }}</h2>
-                             <h2>nombre confiance {{ pnbconfiance }}</h2>
-                             <h2>pourcentage amour {{ pctamour }}</h2>
-                             <h2>nombre modulo {{ pnbamour }}</h2>
-                             <h2>pourcentage sexo {{ pctsexo }}</h2>
-                             <h2>nombre posts sexo {{ pnbsexo }}</h2>
-
-                             <div class="text-right">
-                                 <a href="#">View Details <i class="fa fa-arrow-circle-right"></i></a>
-                             </div>
-                         </div>
-                     </div>
-
-                 </div>-->
                      <div class="col-lg-6 col-md-4">
 
                  <div class="progress">
@@ -378,56 +309,109 @@
 
                  <hr>
 
+   <!--////////////////COMMENTAIRES//////////////////-->
+                             <a id="commentaires"></a>
+                             <h2 class="mt-5">Commentaires </h2>
+                             <h6>Nombre de commentaires :{{ nbComment }}</h6>
 
-                 <a id="moderation"></a>
-                 <h2 class="mt-5">Nombre de commentaires </h2>
-                 <h6>{{ nbComment }}</h6>
 
-                 <div class="card-columns mb-3">
-                     <div class="card">
-                         <img class="card-img-top img-fluid" src="//placehold.it/600x200/444/fff?text=Modération"
-                              alt="Card image cap">
-                         <div class="card-block">
+                    <p class="lead hidden-xs-down">Nombre de commentaires dans chaque catégorie:</p>
 
-                             <div class="card">
-                                 <div class="card-block">
-                                     <ul class="list-unstyled">
-                                         <li class="text-capitalize"><code class="text-lowercase">text-capitalize</code>
-                                             Capitalize each word
-                                         </li>
-                                         <li class="text-uppercase"><code class="text-lowercase">text-uppercase</code>
-                                             Uppercase text
-                                         </li>
-                                         <li class="text-success"><code>text-success</code> Contextual colors for text
-                                         </li>
-                                         <li><code>text-muted</code> <span class="text-muted">
-                                            <td><br>{{ nbCommentsWomen }} and {{ nbCommentsMen }}
 
-                                            </td></span></li>
-                                         <li><code>text-info</code> <span class="text-muted">Info text color</span></li>
-                                         <li><code>text-danger</code> <span class="text-muted">Danger text color</span>
-                                         </li>
-                                         <li><code>text-warning</code> <span
-                                                     class="text-muted">Warning text color</span>
-                                         </li>
-                                         <li><code>text-primary</code> <span
-                                                     class="text-primary">Primary text color</span>
-                                         </li>
-                                     </ul>
-                                 </div>
-                             </div>
-                             <div class="card card-block">
-                                 <h4 class="card-title">Heading</h4>
-                                 <p class="card-text">So now that you've seen some of what Bootstrap 4 has to offer, are
-                                     you
-                                     going to give it a try?</p>
-                                 <p class="card-text">
-                                     <small class="text-muted">Last updated 12 mins ago</small>
-                                 </p>
-                             </div>
+                                     <div class="mb-3">
+                                         <div class="card-deck">
+                                             <div class="card card-inverse card-success text-center">
+                                                 <div class="card-block">
+                                                     <blockquote class="card-blockquote">
+                                                         <p>Catégorie amitié :  {{ nbComments_amitie }}</p>
+                                                         <footer>
+                                                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-success link">Afficher</a>
+                                                         </footer>
+                                                     </blockquote>
+                                                 </div>
+                                             </div>
+
+                                             <div class="card card-inverse card-danger text-center">
+                                                 <div class="card-block">
+                                                     <blockquote class="card-blockquote">
+                                                         <p>Catégorie amour : {{ nbComments_amour }}</p>
+                                                         <footer>
+                                                             <a  href="/{{ path('post.see', {'id': 'x'}) }}" class="btn btn-danger link">Afficher</a>
+                                                         </footer>
+                                                     </blockquote>
+                                                 </div>
+                                             </div>
+                                             <div class="card card-inverse card-warning text-center">
+                                                 <div class="card-block">
+                                                     <blockquote class="card-blockquote">
+                                                         <p>Catégorie confiance : {{ nbComments_confiance }}</p>
+                                                         <footer>
+                                                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-warning link">Afficher</a>
+                                                         </footer>
+                                                     </blockquote>
+                                                 </div>
+                                             </div>
+                                             <div class="card card-inverse card-info text-center">
+                                                 <div class="card-block">
+                                                     <blockquote class="card-blockquote">
+                                                         <p>Catégorie sexo : {{ nbComments_sexo }}</p>
+                                                         <footer>
+                                                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-info link">Afficher</a>
+                                                         </footer>
+                                                     </blockquote>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                     </div>
+                 <div class="row placeholders mb-3">
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class=" fa fa-female fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
+                         <h4>Commentaires filles:{{ nbCommentsWomen}} </h4>
+
+                     </div>
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class=" fa fa-male fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
+                         <h4>Commentaires garçons:{{ nbCommentsMen }} </h4>
+
+                     </div>
+                 </div>
+                 <a id="flexbox"></a>
+
+                 <p class="lead hidden-xs-down">Derniers commentaires postés : </p>
+                 <!-- Ajout d'un scroll-->
+                 <div class="row my-4">
+                     <div class="col-lg-12 col-md-12">
+                         <div class="table-responsive">
+                             <table class="table table-striped">
+                                 <thead class="thead-inverse">
+                                 <tr>
+                                     <th>date</th>
+                                     <!-- <th>auteur</th>-->
+                                     <th>auteur</th>
+                                     <th>contenu</th>
+                                     <th>catégorie</th>
+
+
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for comments in comments %}
+                                     <tr>
+                                         <td>{{ comments.commentDate |date('d.m.Y')}}</td>
+                                         <!--       <td></td> -->
+                                         <td>{{ comments.commentID }}</td>
+                                         <td>{{ comments.commentContent}}</td>
+                                         <td>{{ comments.commentID  }}</td>
+                                     </tr>
+                                 {% endfor %}
+
+                                 </tbody>
+                             </table>
                          </div>
+                     </div>
+                 </div>
 
-                         <!--/card-columns-->
+
 
                          <a id="layouts"></a>
 
@@ -435,14 +419,94 @@
                          <hr>
 
 
-                         <div class="clearfix"></div>
+                 <div class="clearfix"></div>
+                 <a id="users"></a>
+                <h2 class="mt-5">Utilisateurs </h2>
 
+                 <p class="lead hidden-xs-down">Nombre d'utilisateurs :</p>
 
-                     </div><!--/row-->
-
-
+                 <div class="mb-3">
+                     <div class="card-deck">
+                         <div class="card card-inverse card-success text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Inscrits :{{ nb_user }} </p>
+                                     <footer>
+                                         <a  href="/users" class="btn btn-success link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                         <div class="card card-inverse card-danger text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Connectés : {{ nb_user_online }}</p>
+                                     <footer>
+                                         <a  href="" class="btn btn-danger link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                         <div class="card card-inverse card-warning text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Conseillers : {{ conseiller_nb }}</p>
+                                     <footer>
+                                         <a  href="" class="btn btn-warning link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                         <div class="card card-inverse card-info text-center">
+                             <div class="card-block">
+                                 <blockquote class="card-blockquote">
+                                     <p>Signalés : </p>
+                                     <footer>
+                                         <a  href="" class="btn btn-info link">Afficher</a>
+                                     </footer>
+                                 </blockquote>
+                             </div>
+                         </div>
+                     </div>
                  </div>
-                 <h6>Gestion des utilisateurs</h6>
+                 <a id="flexbox"></a>
+
+                 <p class="lead hidden-xs-down">Derniers utilisateurs inscrits : </p>
+                 <!-- Ajout d'un scroll-->
+                 <div class="row my-4">
+                     <div class="col-lg-12 col-md-12">
+                         <div class="table-responsive">
+                             <table class="table table-striped">
+                                 <thead class="thead-inverse">
+                                 <tr>
+                                     <th>date</th>
+                                     <th>genre</th>
+                                     <th>auteur</th>
+                                     <th>présentation</th>
+                                     <th>Âge</th>
+
+
+
+
+                                 </tr>
+                                 </thead>
+                                 <tbody>
+                                 {% for user in users %}
+                                     <tr>
+                                         <td>{{ user.userRegistered |date('d.m.Y')}}</td>
+                                         <td>{{ user.userSexe }}</td>
+                                         <td>{{ user.userLogin }}</td>
+                                         <td>{{ user.presentation}}</td>
+                                         <td>{{ user.age }}</td>
+
+                                     </tr>
+                                 {% endfor %}
+
+                                 </tbody>
+                             </table>
+                         </div>
+                     </div>
+                 </div>
 
                  <!--/main col-->
              </div>
