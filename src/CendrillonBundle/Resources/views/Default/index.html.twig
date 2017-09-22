@@ -9,9 +9,9 @@
                      <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
                      <li class="nav-item">
                          <a class="nav-link" href="#submenu1" data-toggle="collapse"
-                            data-target="#submenu1">Catégories▾</a>
+                            data-target="#submenu1">Catégories posts▾</a>
                          <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                             <li class="nav-item"><a class="nav-link" href="/posts#amitie">Amitié</a></li>
+                             <li class="nav-item"><a class="nav-link" href= href="" >Amitié</a></li>
                              <li class="nav-item"><a class="nav-link" href="/posts#amour">Amour</a></li>
                              <li class="nav-item"><a class="nav-link" href="/posts#confiance">Confiance</a></li>
                              <li class="nav-item"><a class="nav-link" href="/posts#sexo">Sexo</a></li>
@@ -119,12 +119,12 @@
 
                      <div class="col-6 col-sm-3 placeholder text-center">
                          <i class="fa fa-female fa-3x"></i>
-                         <h4>utilisateurs filles : {{ fille_user }}</h4>
-                         <!--  <span class="text-muted">UI / UX oriented</span> -->
+                         <h4>utilisatrices : {{ fille_user }}</h4>
+
                      </div>
                      <div class="col-6 col-sm-3 placeholder text-center">
                          <i class=" fa fa-male fa-3x"></i>
-                         <h4>utilisateurs garçons : {{ garcon_user }}</h4>
+                         <h4>utilisateurs  : {{ garcon_user }}</h4>
 
                      </div>
                      <div class="col-6 col-sm-3 placeholder text-center">
@@ -147,7 +147,7 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="table-responsive">
-                                <table class="table table-striped">
+                                <table class="table table-striped" id="User">
                                     <thead class="thead-inverse">
                                     <tr>
                                         <th>pseudo</th>
@@ -160,7 +160,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    {% for users in users %}
+                                    {% for users in users|reverse%}
                                     <tr>
                                         <td>{{ users.userLogin()}}</td>
                                         <td>{{ users.userSexe }}</td>
@@ -242,241 +242,316 @@
 
                      </div>
                      <hr>
+             </div>
+             <div class="progress">
+                 <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctsexo }}%">
+
                  </div>
-                 <div class="progress">
-                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctsexo }}%">
+                 <hr>
+             </div>
+             <div class="progress">
+                 <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctconfiance }}%">
 
-                     </div>
-                     <hr>
                  </div>
-                 <div class="progress">
-                     <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctconfiance }}%">
+                 <hr>
+             </div>
+             <div class="progress">
+                 <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctamour }}%">
 
-                     </div>
-                     <hr>
                  </div>
-                 <div class="progress">
-                     <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: {{ pctamour }}%">
-
-                     </div>
-                     <hr>
-                 </div>
-                     </div>
-                 </div>
+                 <hr>
+             </div>
+         </div>
+     </div>
 
 
 
-                 <!--/row-->
+     <!--/row-->
 
 
 
-                 <a id="flexbox"></a>
+     <a id="flexbox"></a>
 
-                 <p class="lead hidden-xs-down">Derniers messages postés</p>
-<!-- Ajout d'un scroll-->
-                 <div class="row my-4">
-                 <div class="col-lg-12 col-md-12">
-                     <div class="table-responsive">
-                         <table class="table table-striped">
-                             <thead class="thead-inverse">
-                             <tr>
-                                 <th>date</th>
-                                <!-- <th>auteur</th>-->
-                                 <th>titre</th>
-                                 <th>contenu</th>
-                                 <th>catégorie</th>
+     <p class="lead hidden-xs-down">Derniers messages postés</p>
+     <!-- Ajout d'un scroll-->
+     <div class="row my-4">
+         <div class="col-lg-12 col-md-12">
+             <div class="table-responsive">
+                 <table class="table table-striped">
+                     <thead class="thead-inverse">
+                     <tr>
+                         <th>date</th>
+
+                         <th>titre</th>
+                         <th>contenu</th>
+                         <th>catégorie</th>
 
 
-                             </tr>
-                             </thead>
-                             <tbody>
-                             {% for posts in posts %}
-                                 <tr>
-                                     <td>{{ posts.postDate |date('d.m.Y')}}</td>
-                              <!--       <td></td> -->
-                                     <td>{{ posts.postTitle }}</td>
-                                     <td>{{ posts.postContent}}</td>
-                                     <td>{{ posts.categorie  }}</td>
-                                 </tr>
-                             {% endfor %}
+                     </tr>
+                     </thead>
+                     <tbody>
+                     {% for posts in posts|reverse %}
+                         <tr>
+                             <td>{{ posts.postDate |date('d.m.Y')}}</td>
+                             <td>{{ posts.postTitle }}</td>
+                             <td>{{ posts.postContent}}</td>
+                             <td>{{ posts.categorie  }}</td>
+                         </tr>
+                     {% endfor %}
 
-                             </tbody>
-                         </table>
-                     </div>
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+     </div>
+
+
+     <hr>
+
+     <!--////////////////COMMENTAIRES//////////////////-->
+     <a id="commentaires"></a>
+     <h2 class="mt-5">Commentaires </h2>
+     <h6>Nombre de commentaires :{{ nbComment }}</h6>
+
+
+     <p class="lead hidden-xs-down">Nombre de commentaires dans chaque catégorie:</p>
+
+
+     <div class="mb-3">
+         <div class="card-deck">
+             <div class="card card-inverse card-success text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Catégorie amitié :  {{ nbComments_amitie }}</p>
+                         <footer>
+                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-success link">Afficher</a>
+                         </footer>
+                     </blockquote>
                  </div>
              </div>
 
+             <div class="card card-inverse card-danger text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Catégorie amour : {{ nbComments_amour }}</p>
+                         <footer>
+                             <a  href="/{{ path('post.see', {'id': 'x'}) }}" class="btn btn-danger link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+             <div class="card card-inverse card-warning text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Catégorie confiance : {{ nbComments_confiance }}</p>
+                         <footer>
+                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-warning link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+             <div class="card card-inverse card-info text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Catégorie sexo : {{ nbComments_sexo }}</p>
+                         <footer>
+                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-info link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+         </div>
+     </div>
+     <div class="row placeholders mb-3">
+         <div class="col-6 col-sm-3 placeholder text-center">
+             <i class=" fa fa-female fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
+             <h4>Commentaires filles:{{ nbCommentsWomen}} </h4>
 
+         </div>
+         <div class="col-6 col-sm-3 placeholder text-center">
+             <i class=" fa fa-male fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
+             <h4>Commentaires garçons:{{ nbCommentsMen }} </h4>
+
+         </div>
+     </div>
+     <a id="flexbox"></a>
+
+     <p class="lead hidden-xs-down">Derniers commentaires postés : </p>
+     <!-- Ajout d'un scroll-->
+     <div class="row my-4">
+         <div class="col-lg-12 col-md-12">
+             <div class="table-responsive">
+                 <table class="table table-striped">
+                     <thead class="thead-inverse">
+                     <tr>
+                         <th>date</th>
+                         <!-- <th>auteur</th>-->
+                         <th>auteur</th>
+                         <th>contenu</th>
+                         <th>catégorie</th>
+
+
+                     </tr>
+                     </thead>
+                     <tbody>
+                     {% for comments in comments|reverse %}
+                         <tr>
+                             <td>{{ comments.commentDate |date('d.m.Y')}}</td>
+                             <!--       <td></td> -->
+                             <td>{{ comments.commentAuthor.userLogin }}</td>
+                             <td>{{ comments.commentContent}}</td>
+                             <td>{{ comments.commentID  }}</td>
+                         </tr>
+                     {% endfor %}
+
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+     </div>
+
+
+
+     <a id="layouts"></a>
+
+
+     <hr>
+<!--///////////////////////////////////////////////UTILISATEURS////////////////////////////////////////////////-->
+
+     <div class="clearfix"></div>
+     <a id="users"></a>
+     <h2 class="mt-5">Utilisateurs </h2>
+
+     <p class="lead hidden-xs-down">Nombre d'utilisateurs : {{ nb_user }}</p>
+
+     <div class="mb-3">
+         <div class="card-deck">
+             <div class="card card-inverse card-success text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Inscrits :{{ nb_user }} </p>
+                         <footer>
+                             <a  href="{{ path('users') }}" class="btn btn-success link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+             <div class="card card-inverse card-danger text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Connectés : {{ nb_user_online }}</p>
+                         <footer>
+                             <a  href="{{ path('usersonline') }}" class="btn btn-danger link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+             <div class="card card-inverse card-warning text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Conseillers : {{ conseiller_nb }}</p>
+                         <footer>
+                             <a  href="{{ path('conseiller') }}" class="btn btn-warning link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+             <div class="card card-inverse card-info text-center">
+                 <div class="card-block">
+                     <blockquote class="card-blockquote">
+                         <p>Signalés : </p>
+                         <footer>
+                             <a  href="{{ path('userswarning') }}" class="btn btn-info link">Afficher</a>
+                         </footer>
+                     </blockquote>
+                 </div>
+             </div>
+         </div>
+     </div>
                  <hr>
+                 <p class="lead hidden-xs-down">Ages moyens des utilisateurs du site:</p>
 
-   <!--////////////////COMMENTAIRES//////////////////-->
-                             <a id="commentaires"></a>
-                             <h2 class="mt-5">Commentaires </h2>
-                             <h6>Nombre de commentaires :{{ nbComment }}</h6>
-
-
-                    <p class="lead hidden-xs-down">Nombre de commentaires dans chaque catégorie:</p>
-
-
-                                     <div class="mb-3">
-                                         <div class="card-deck">
-                                             <div class="card card-inverse card-success text-center">
-                                                 <div class="card-block">
-                                                     <blockquote class="card-blockquote">
-                                                         <p>Catégorie amitié :  {{ nbComments_amitie }}</p>
-                                                         <footer>
-                                                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-success link">Afficher</a>
-                                                         </footer>
-                                                     </blockquote>
-                                                 </div>
-                                             </div>
-
-                                             <div class="card card-inverse card-danger text-center">
-                                                 <div class="card-block">
-                                                     <blockquote class="card-blockquote">
-                                                         <p>Catégorie amour : {{ nbComments_amour }}</p>
-                                                         <footer>
-                                                             <a  href="/{{ path('post.see', {'id': 'x'}) }}" class="btn btn-danger link">Afficher</a>
-                                                         </footer>
-                                                     </blockquote>
-                                                 </div>
-                                             </div>
-                                             <div class="card card-inverse card-warning text-center">
-                                                 <div class="card-block">
-                                                     <blockquote class="card-blockquote">
-                                                         <p>Catégorie confiance : {{ nbComments_confiance }}</p>
-                                                         <footer>
-                                                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-warning link">Afficher</a>
-                                                         </footer>
-                                                     </blockquote>
-                                                 </div>
-                                             </div>
-                                             <div class="card card-inverse card-info text-center">
-                                                 <div class="card-block">
-                                                     <blockquote class="card-blockquote">
-                                                         <p>Catégorie sexo : {{ nbComments_sexo }}</p>
-                                                         <footer>
-                                                             <a  href="{{ path('post.see', {'id': 'x'}) }}" class="btn btn-info link">Afficher</a>
-                                                         </footer>
-                                                     </blockquote>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                     </div>
                  <div class="row placeholders mb-3">
                      <div class="col-6 col-sm-3 placeholder text-center">
-                         <i class=" fa fa-female fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
-                         <h4>Commentaires filles:{{ nbCommentsWomen}} </h4>
+                         <i class=" fa fa-users  fa-3x"></i>
+                         <h4>Utilisateurs : {{ ageMoyUsers }} ans</h4>
+                     </div>
+
+                     <div class="col-6 col-sm-3 placeholder text-center">
+                         <i class="fa fa-female fa-3x"></i>
+                         <h4>Filles : {{ ageMoyWomen }} ans</h4>
 
                      </div>
                      <div class="col-6 col-sm-3 placeholder text-center">
-                         <i class=" fa fa-male fa-3x fa"></i> <i class="fa fa-comments fa-3x"></i>
-                         <h4>Commentaires garçons:{{ nbCommentsMen }} </h4>
-
-                     </div>
-                 </div>
-                 <a id="flexbox"></a>
-
-                 <p class="lead hidden-xs-down">Derniers commentaires postés : </p>
-                 <!-- Ajout d'un scroll-->
-                 <div class="row my-4">
-                     <div class="col-lg-12 col-md-12">
-                         <div class="table-responsive">
-                             <table class="table table-striped">
-                                 <thead class="thead-inverse">
-                                 <tr>
-                                     <th>date</th>
-                                     <!-- <th>auteur</th>-->
-                                     <th>auteur</th>
-                                     <th>contenu</th>
-                                     <th>catégorie</th>
-
-
-                                 </tr>
-                                 </thead>
-                                 <tbody>
-                                 {% for comments in comments %}
-                                     <tr>
-                                         <td>{{ comments.commentDate |date('d.m.Y')}}</td>
-                                         <!--       <td></td> -->
-                                         <td>{{ comments.commentAuthor.userLogin }}</td>
-                                         <td>{{ comments.commentContent}}</td>
-                                         <td>{{ comments.commentID  }}</td>
-                                     </tr>
-                                 {% endfor %}
-
-                                 </tbody>
-                             </table>
-                         </div>
+                         <i class=" fa fa-male fa-3x"></i>
+                         <h4>Garçons : {{ ageMoyMen }} ans</h4>
                      </div>
                  </div>
 
 
-
-                         <a id="layouts"></a>
-
-
-                         <hr>
-
-
-                 <div class="clearfix"></div>
-                 <a id="users"></a>
-                <h2 class="mt-5">Utilisateurs </h2>
-
-                 <p class="lead hidden-xs-down">Nombre d'utilisateurs :</p>
-
+                 <p class="lead hidden-xs-down">Par catégories:</p>
                  <div class="mb-3">
                      <div class="card-deck">
                          <div class="card card-inverse card-success text-center">
                              <div class="card-block">
                                  <blockquote class="card-blockquote">
-                                     <p>Inscrits :{{ nb_user }} </p>
-                                     <footer>
-                                         <a  href="/users" class="btn btn-success link">Afficher</a>
-                                     </footer>
+                                     <h3>Amitié</h3>
+                                     <p> <i class=" fa fa-users  fa-1x"></i>{{ ageMoyCatAmitie }} ans </p>
+                                     <p> <i class=" fa fa-female  fa-1x"></i>{{ ageMoyCatAmour }} ans </p>
+                                     <p> <i class=" fa fa-male  fa-1x"></i>{{ ageMoyCatConfiance }} ans </p>
+
                                  </blockquote>
                              </div>
                          </div>
                          <div class="card card-inverse card-danger text-center">
                              <div class="card-block">
                                  <blockquote class="card-blockquote">
-                                     <p>Connectés : {{ nb_user_online }}</p>
-                                     <footer>
-                                         <a  href="" class="btn btn-danger link">Afficher</a>
-                                     </footer>
+                                     <h3>Amour</h3>
+                                     <p> <i class=" fa fa-users  fa-1x"></i> {{ ageMoyCatAmour }} ans</p>
+                                     <p> <i class=" fa fa-female  fa-1x"></i> {{ ageMoyCatAmour }} ans</p>
+                                     <p> <i class=" fa fa-male  fa-1x"></i> {{ ageMoyCatConfiance }} ans</p>
+
+
                                  </blockquote>
                              </div>
                          </div>
                          <div class="card card-inverse card-warning text-center">
                              <div class="card-block">
                                  <blockquote class="card-blockquote">
-                                     <p>Conseillers : {{ conseiller_nb }}</p>
-                                     <footer>
-                                         <a  href="" class="btn btn-warning link">Afficher</a>
-                                     </footer>
+                                     <h3>Confiance</h3>
+                                     <p> <i class=" fa fa-users  fa-1x"></i> {{ ageMoyCatConfiance }} ans</p>
+                                     <p> <i class=" fa fa-female  fa-1x"></i> {{ ageMoyCatAmour }} ans</p>
+                                     <p> <i class=" fa fa-male  fa-1x"></i> {{ ageMoyCatConfiance }} ans</p>
+
+
                                  </blockquote>
                              </div>
                          </div>
                          <div class="card card-inverse card-info text-center">
                              <div class="card-block">
                                  <blockquote class="card-blockquote">
-                                     <p>Signalés : </p>
-                                     <footer>
-                                         <a  href="" class="btn btn-info link">Afficher</a>
-                                     </footer>
+                                     <h3>Sexo</h3>
+                                     <p> <i class=" fa fa-users  fa-1x"></i> {{ ageMoyCatSexo }} ans</p>
+                                     <p> <i class=" fa fa-female  fa-1x"></i> {{ ageMoyCatAmour }} ans</p>
+                                     <p> <i class=" fa fa-male  fa-1x"></i> {{ ageMoyCatConfiance }} ans</p>
+
+
                                  </blockquote>
                              </div>
                          </div>
                      </div>
                  </div>
-                 <a id="flexbox"></a>
+                 <hr>
 
+
+                 <a id="flexbox"></a>
+                 <div class="row placeholders mb-3">
                  <p class="lead hidden-xs-down">Derniers utilisateurs inscrits : </p>
                  <!-- Ajout d'un scroll-->
                  <div class="row my-4">
                      <div class="col-lg-12 col-md-12">
                          <div class="table-responsive">
-                             <table class="table table-striped">
+                             <table class="table table-striped" id="Users">
                                  <thead class="thead-inverse">
                                  <tr>
                                      <th>date</th>
@@ -491,7 +566,7 @@
                                  </tr>
                                  </thead>
                                  <tbody>
-                                 {% for user in users %}
+                                 {% for user in users|reverse %}
                                      <tr>
                                          <td>{{ user.userRegistered |date('d.m.Y')}}</td>
                                          <td>{{ user.userSexe }}</td>
@@ -515,7 +590,7 @@
          </div>
          <!--/.container-->
          <footer class="container-fluid">
-             <p class="text-right small">©2016-2017 Company</p>
+             <p class="text-right small">©2017 kriss</p>
          </footer>
 
 
@@ -535,6 +610,17 @@
  {% endblock %}
 {% block javascripts %}
 
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#Users').DataTable(
+                {
+            "language":{
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
+
+        } )};
+    </script>
 
 {% endblock javascripts %}
 

@@ -2,6 +2,7 @@
 
 namespace CendrillonBundle\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -17,7 +18,13 @@ class UsersController extends Controller
         $usersOnline = $this->getDoctrine()->getRepository("CendrillonBundle:Users_online")->findAll();
 
 
+
+
+ //dump($usersOnline); die();
         return $this->render('CendrillonBundle:Default:users.html.twig', array('users' => $users,
             'usersOnline'=> $usersOnline));
     }
+
+
+
 }

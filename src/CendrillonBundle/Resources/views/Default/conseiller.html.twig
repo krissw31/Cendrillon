@@ -1,0 +1,56 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <div class="container">
+
+        <h2>Utilisateurs conseillers:</h2>
+        <div class="row my-4">
+            <div class="col-lg-12 col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="bg-success">
+                        <tr>
+                            <th style="width:10%;">date</th>
+                            <th style="width:6%;">nom</th>
+                            <th style="width:6%;">genre</th>
+                            <th style="width:50%;">présentation</th>
+                            <th style="width:6%;">âge</th>
+                            <th style="width:6%;">online</th>
+                            <th style="width:10%;">Dernière connexion</th>
+                            <th style="width:6%;">indice confiance</th>
+
+
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for conseiller in conseillers|reverse %}
+                            <tr>
+                                <td>{{ conseiller.dateRegister |date('d/m/Y h:i:s') }}</td>
+                                <td>{{ conseiller.displayname }}</td>
+                                <td>{{ conseiller.userId.userSexe }}</td>
+                                <td>{{ conseiller.UserId.presentation}}</td>
+                                <td>{{ conseiller.userId.age }}</td>
+                                <td>{% if conseiller.userId.isOnline() %}<span class="glyphicon glyphicon-ok" >ok </span>{% endif %}</td>
+                                <td>{{ conseiller.lastConnexion |date('d/m/Y') }}</td>
+                                <td>{{ conseiller.indiceConfiance }}</td>
+
+
+
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

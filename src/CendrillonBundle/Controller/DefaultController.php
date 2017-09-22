@@ -25,7 +25,6 @@ class DefaultController extends Controller
 
 
 
-
         //Nombre d'utilisateurs
         $users = $this->getDoctrine()->getRepository("CendrillonBundle:User")->findAll();
         $nbUser=count($users);
@@ -52,7 +51,8 @@ class DefaultController extends Controller
             }
         }
 
-        // NOMBRE DE COMMENTAIRE POSTES
+       /////////////////////////////////////// // NOMBRE DE COMMENTAIRE POSTES///////////////////////////////
+
         $comments = $this->getDoctrine()->getRepository("CendrillonBundle:Comments")->findAll();
         $nbComments=count($comments);
 
@@ -69,8 +69,6 @@ class DefaultController extends Controller
             $auteurComments = $comment->getCommentAuthor();
             $auteurCommentsWomen =  $auteurComments->getUserSexe()===self::FILLE;
             $nbCommentsWomen = count($auteurCommentsWomen);
-
-
 
                 }
 
@@ -106,42 +104,49 @@ class DefaultController extends Controller
 
 
 
-        //Nombre de posts
+        ////////////////////////////Nombre de posts
+        ///
         $posts = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findAll();
         $nbb=count($posts);
 
-        //nombre d'utilisateurs filles
+        /////////////////////nombre d'utilisateurs filles
+        ///
         $userfille = $this->getDoctrine()->getRepository("CendrillonBundle:User")->findBy(array('user_sexe'=>self::FILLE));
         $nbfille = count($userfille);
 
-        //nombre d'utilisateurs garcons
+        /////////////////////nombre d'utilisateurs garcons
+        ///
         $usergarcon = $this->getDoctrine()->getRepository("CendrillonBundle:User")->findBy(array('user_sexe'=>self::GARCON));
         $nbgarcon = count($usergarcon);
 
-        //nombre de conseillers
+        ////////////////////////////////////////////nombre de conseillers/////////////////////////////
+
         $usersconseillers = $this->getDoctrine()->getRepository("CendrillonBundle:Conseiller")->findAll();
         $nbconseiller = count($usersconseillers);
 
-        //nombre de conseillers filles
+        //////////////////////////////////////////nombre de conseillers filles/////////////////////////
+
         $usersconseillersfilles = $this->getDoctrine()->getRepository("CendrillonBundle:Conseiller")->findBy(array("user_sexe"=>self::FILLE));
         $nbconseillerfille = count($usersconseillersfilles);
 
-        //nombre de conseillers garcon
+        //////////////////////////////////////////////nombre de conseillers garcon//////////////////
         $usersconseillersgarcons = $this->getDoctrine()->getRepository("CendrillonBundle:Conseiller")->findBy(array("user_sexe"=>self::GARCON));
         $nbconseillergarcon = count($usersconseillersgarcons);
 
 
-        //Appel methode nombre de posts  postés dans chaque  categorie
+        //////////////////////////////////Appel methode nombre de posts  postés dans chaque  categorie
+
         $nb_posts_amitie = $this->nbrePostsCategory(self::AMITIE);
         $nb_posts_confiance = $this->nbrePostsCategory(self::CONFIANCE);
         $nb_posts_amour = $this->nbrePostsCategory(self::AMOUR);
         $nb_posts_sexo = $this->nbrePostsCategory(self::SEXO);
 
-        //Appel methode nombre de posts  postés par genre
+        /////////////////////////////////Appel methode nombre de posts  postés par genre
+
         $nb_postsF = $this->nbrePostsUsersSexe(self::FILLE);
         $nb_postsG = $this->nbrePostsUsersSexe(self::GARCON);
 
-        //------------------------------calculs nombre de posts en pourcentage;----------------------------
+        ///////------------------------------calculs nombre de posts en pourcentage;----------------------------
 
 
         $nb_posts = $nb_posts_amitie + $nb_posts_confiance + $nb_posts_amour+ $nb_posts_sexo;
@@ -155,7 +160,7 @@ class DefaultController extends Controller
         $pctsexo = $pnbsexo*100;
 
 /////////////////////////////////nombre de commentaires pour chaque categorie/////////////////////////////////
-///
+
         $posts_amitie = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie' => self::AMITIE]);
         $posts_amour = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie'=> self::AMOUR]);
         $posts_confiance = $this->getDoctrine()->getRepository("CendrillonBundle:Posts")->findBy(['categorie'=>self::CONFIANCE]);
@@ -205,6 +210,43 @@ class DefaultController extends Controller
         $comments = $this->getDoctrine()->getRepository("CendrillonBundle:Comments")->findAll();
 
 
+        /////////////////methodes pour calculer la moyenne d'age générale garçon et fille////////////////////////////////
+        $ages = array();
+
+
+        foreach ($users as $user) {
+            $ages[] = $user->getAge();
+        }
+
+        $ageMoyUsers = array_sum($ages)/count($ages);
+
+        //affichage des âges  men users
+        $agesMen = $this->ageUsersSexe(self::GARCON);
+        //moyenne d'âge men
+        $ageMoyMen = array_sum($agesMen)/count($agesMen);
+
+
+        //affichage des âges women users
+        $agesWomen = $this->ageUsersSexe(self::FILLE);
+        //moyenne d'âge women
+        $ageMoyWomen = array_sum($agesWomen)/count($agesWomen);
+
+        //APPEL fonction pour recuperer äges categorie amour
+        $agesCatAmour = $this->getAgeCaterogy("amour");
+        $agesCatAmitie = $this->getAgeCaterogy("amitie");
+        $agesCatConfiance = $this->getAgeCaterogy("confiance");
+        $agesCatSexo = $this->getAgeCaterogy("sexo");
+
+       //////////////////////////// //Moyennes d'âges pour chaque catégorie
+        $ageMoyCatAmour = array_sum($agesCatAmour)/count($agesCatAmour);
+        $ageMoyCatAmitie = array_sum($agesCatAmitie)/count($agesCatAmitie);
+        $ageMoyCatConfiance = array_sum($agesCatConfiance)/count($agesCatConfiance);
+        $ageMoyCatSexo = array_sum($agesCatSexo)/count($agesCatSexo);
+
+
+        ////////////Nombre d'utilisteurs par catégorie///////////////////////////////////
+
+
 
 
 
@@ -246,6 +288,13 @@ class DefaultController extends Controller
                 "nbComments_sexo"=>$nbComments_sexo,
                 "comments_confiance"=>$comments_confiance,
                 "comments"=>$comments,
+                "ageMoyUsers"=> $ageMoyUsers,
+                "ageMoyMen"=>$ageMoyMen,
+                "ageMoyWomen"=>$ageMoyWomen,
+                "ageMoyCatAmour"=>$ageMoyCatAmour,
+                "ageMoyCatAmitie"=>$ageMoyCatAmitie,
+                "ageMoyCatConfiance"=>$ageMoyCatConfiance,
+                "ageMoyCatSexo"=>$ageMoyCatSexo
             ]);
 
     }
@@ -289,9 +338,9 @@ class DefaultController extends Controller
         $agesCatSexo = $this->getAgeCaterogy("sexo");
 
         //Moyennes d'âges pour chaque catégorie
-//        $ageMoyCatAmour = array_sum($agesCatAmour)/count($agesCatAmour);
+  //     $ageMoyCatAmour = array_sum($agesCatAmour)/count($agesCatAmour);
 //        $ageMoyCatAmitie = array_sum($agesCatAmitie)/count($agesCatAmitie);
-//        $ageMoyCatConfiance = array_sum($agesCatConfiance)/count($agesCatConfiance);
+        $ageMoyCatConfiance = array_sum($agesCatConfiance)/count($agesCatConfiance);
 //        $ageMoyCatSexo = array_sum($agesCatSexo)/count($agesCatSexo);
 
         return $this->render("CendrillonBundle:Default:age.html.twig", [
@@ -305,9 +354,9 @@ class DefaultController extends Controller
             "ageMoyUsers"=> $ageMoyUsers,
             "ageMoyMen"=>$ageMoyMen,
             "ageMoyWomen"=>$ageMoyWomen,
-//            "ageMoyCatAmour"=>$ageMoyCatAmour,
+  //         "ageMoyCatAmour"=>$ageMoyCatAmour,
 //            "ageMoyCatAmitie"=>$ageMoyCatAmitie,
-//            "ageMoyCatConfiance"=>$ageMoyCatConfiance,
+            "ageMoyCatConfiance"=>$ageMoyCatConfiance,
 //            "ageMoyCatSexo"=>$ageMoyCatSexo
             ]);
 

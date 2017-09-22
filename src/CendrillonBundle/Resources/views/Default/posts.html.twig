@@ -10,7 +10,7 @@
 <div class="row my-4">
     <div class="col-lg-12 col-md-12">
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered " cellspacing="0" width="100%" id="Amitie" >
                 <thead class="bg-success">
                 <tr>
                     <th style="width:9%;">date</th>
@@ -26,7 +26,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for posts_amitie in posts_amitie %}
+                {% for posts_amitie in posts_amitie|reverse %}
                     <tr>
                         <td>{{ posts_amitie.postDate |date('d/m/Y')}}</td>
                                <td>{{ posts_amitie.postAuthor.userLogin }}</td>
@@ -51,7 +51,7 @@
     <div class="row my-4">
         <div class="col-lg-12 col-md-12">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="Amour">
                     <thead class="bg-danger">
                     <tr>
                         <th>date</th>
@@ -68,7 +68,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for posts_amour in  posts_amour %}
+                    {% for posts_amour in  posts_amour|reverse %}
                         <tr>
                             <td>{{  posts_amour.postDate |date('d/m/Y')}}</td>
                             <td>{{ posts_amour.postAuthor.userLogin }}</td>
@@ -94,7 +94,7 @@
     <div class="row my-4">
         <div class="col-lg-12 col-md-12">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="Confiance">
                     <thead class="bg-warning">
                     <tr>
                         <th>date</th>
@@ -112,7 +112,7 @@
                     </thead>
                     <tbody>
 
-                    {% for posts_confiance in  posts_confiance %}
+                    {% for posts_confiance in  posts_confiance|reverse %}
                         <tr>
                             <td>{{  posts_confiance.postDate |date('d/m/Y')}}</td>
                             <td>{{ posts_confiance.postAuthor.userLogin }}</td>
@@ -138,7 +138,7 @@
     <div class="row my-4">
         <div class="col-lg-12 col-md-12">
             <div class="table-responsive">
-                <table class="table table-striped">
+                <table class="table table-striped" id="Sexo">
                     <thead class="bg-info">
                     <tr>
                         <th>date</th>
@@ -161,9 +161,9 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for posts_sexo in  posts_sexo %}
+                    {% for posts_sexo in  posts_sexo|reverse %}
                         <tr>
-                            <td>{{  posts_sexo.postDate |date('d/m/Y')}}</td>
+                            <td>{{  posts_sexo.postDate |date('d/m/Y h:i:s')}}</td>
                             <td>{{ posts_sexo.postAuthor.userLogin }}</td>
                             <td>{{  posts_sexo.postTitle }}</td>
                             <td>{{  posts_sexo.postContent}}</td>
@@ -186,3 +186,71 @@
 
  {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+
+            $('#Amitie').DataTable(
+                {
+                    "language":
+                    {
+                        "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/French.json"
+                    },
+                    "columnDefs":
+                    [{
+                        targets: 3,
+                        render: $.fn.dataTable.render.ellipsis(60)
+                    }]
+                }
+            );
+            $('#Amour').DataTable(
+                {
+                    "language":
+                        {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                },
+                    "columnDefs":
+                        [{
+                            targets: 3,
+                            render: $.fn.dataTable.render.ellipsis(60)
+                        }]
+                }
+
+            );
+            $('#Confiance').DataTable(
+                {
+                    "language":
+                        {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                        },
+                    "columnDefs":
+                        [{
+                            targets: 3,
+                            render: $.fn.dataTable.render.ellipsis(60)
+                        }]
+
+                }
+            );
+            $('#Sexo').DataTable(
+                {
+                    "language":
+                        {
+                        "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"
+                        },
+                    "columnDefs":
+                        [{
+                            targets: 3,
+                            render: $.fn.dataTable.render.ellipsis(60)
+                        }]
+
+                });
+
+        } );
+    </script>
+
+
+
+
+{%  endblock %}

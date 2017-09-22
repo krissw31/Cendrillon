@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
         <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap4.min.css">
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <!--getting started morris-->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
@@ -21,10 +22,20 @@
         <link rel="stylesheet" type="text/css" href="/css/jquery-ui-1.8.22.custom.css"  media="screen" />
 
         <meta name="description" content="Designed to be the perfect starting point&nbsp;for any dashboard or admin site. Charts,&nbsp;graphs, sortable tables,&nbsp;and more than a dozen other new&nbsp;components included.">
+        <style>
+            .dataTables_length,
+            .dataTables_filter {
+                width:50%;
+                float: left;
+            }
+            .dataTables_filter{
+                text-align: right;
+            }
 
+        </style>
     </head>
     <body>
-    <nav class="navbar navbar-toggleable-sm navbar-inverse bg-primary mb-3">
+    <nav class="navbar fixed-top navbar-toggleable-sm navbar-inverse  bg-primary mb-3">
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
                 data-target="#collapsingNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -45,9 +56,9 @@
                     <a class="nav-link" href="/index#features">Messages</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#commentaires">Commentaires</a>
+                    <a class="nav-link" href="/index#commentaires">Commentaires</a>
                  <li class="nav-item">
-                    <a class="nav-link" href="#users">Utilisateurs</a>
+                    <a class="nav-link" href="/index#users">Utilisateurs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/chat">Chat</a>
@@ -64,20 +75,29 @@
 
 
     {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    <!--fenetre de confirmation de supression-->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-    <!-- <script type="text/javascript" src="/js/jquery-ui-1.8.22.custom.min.js"></script>
-         <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    {% block javascripts %}
 
 
-         <!--script morris
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>-->
+        <!--fenetre de confirmation de supression-->
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js">
+        </script>
+        <script src="//cdn.datatables.net/plug-ins/1.10.16/dataRender/ellipsis.js"></script>
+        <!-- <script type="text/javascript" src="/js/jquery-ui-1.8.22.custom.min.js"></script>
+             <script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+             <!--script morris
+            <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+            <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>-->
+
+    {% endblock %}
+
 
 
     </body>

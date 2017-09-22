@@ -1,0 +1,93 @@
+{% extends"base.html.twig" %}
+{% block body %}
+    <div class="container">
+
+        <h2>Utilisateurs avertis une fois:</h2>
+        <div class="row my-4">
+            <div class="col-lg-12 col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="bg-success">
+                        <tr>
+
+                            <th style="width:1%;">auteur</th>
+                            <th style="width:8%;">genre</th>
+                            <th style="width: 49%;">présentation</th>
+                            <th style="width: 8%;">âge</th>
+                            <th style="width: 5%;">Avertissement</th>
+
+
+
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for userwarning in userswarning|reverse %}
+                            <tr>
+
+                                <td>{{   }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+
+
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <h2>Utilisateurs avec deux avertissements:</h2>
+        <div class="row my-4">
+            <div class="col-lg-12 col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead class="bg-success">
+                        <tr>
+
+                            <th style="width:1%;">auteur</th>
+                            <th style="width:8%;">genre</th>
+                            <th style="width: 49%;">présentation</th>
+                            <th style="width: 8%;">âge</th>
+                            <th style="width: 5%;">Avertissement</th>
+
+
+
+
+
+
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+
+                                <td>{{ user.  }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+
+
+
+
+
+                            </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -70,7 +70,6 @@ namespace CendrillonBundle\Controller;
          */
         public function deletePost(Posts $post)
         {
-//dump($post);die();
 
             $em = $this->getDoctrine()->getManager();
             $em->remove($post);

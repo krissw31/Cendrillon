@@ -4,7 +4,7 @@
 <div class="container">
      <h2>Voici les commentaires pour le message:</h2>
 
-     <p>Message posté le {{ commentsPostDate |date('d/m/Y') }} , par {{ commentsPostAuthor.userLogin }}:</p>
+     <p>Message posté le {{ commentsPostDate |date('d/m/Y h:i:s') }} , par {{ commentsPostAuthor.userLogin }}:</p>
      <p>"{{ commentsPostContent }}"</p>
 
      <p></p>
@@ -32,7 +32,7 @@
                      <tbody>
                      {% for comment in commentPost %}
                          <tr>
-                             <td>{{ comment.commentDate |date('d/m/Y') }}</td>
+                             <td>{{ comment.commentDate |date('d/m/Y h:i:s') }}</td>
                                     <td>{{ comment.commentAuthor.userLogin}}</td>
 
                              <td>{{ comment.commentContent }}</td>

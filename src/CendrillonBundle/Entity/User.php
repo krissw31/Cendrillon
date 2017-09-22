@@ -101,6 +101,22 @@ class User
      */
     private $indice_confiance;
 
+    /**
+     * @return bool
+     */
+    public function isIsOnline()
+    {
+        return $this->isOnline;
+    }
+
+    /**
+     * @param bool $isOnline
+     */
+    public function setIsOnline($isOnline)
+    {
+        $this->isOnline = $isOnline;
+    }
+
     public function getAge()
     {
         $now = new \DateTime('now');
@@ -469,28 +485,13 @@ class User
         return $this->post;
     }
 
-    /**
-     * Set online
-     *
-     * @param \CendrillonBundle\Entity\Users_online $online
-     *
-     * @return User
-     */
-    public function setOnline(\CendrillonBundle\Entity\Users_online $online = null)
-    {
-        $this->online = $online;
-
-        return $this;
-    }
 
     /**
-     * Get online
-     *
-     * @return \CendrillonBundle\Entity\Users_online
+     * @return mixed
      */
-    public function getOnline()
+    public function isOnline()
     {
-        return $this->online;
+        return $this->online !== null;
     }
 
     /**
