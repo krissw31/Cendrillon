@@ -6,12 +6,10 @@ use Doctrine\ORM\Mapping\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 
 /**
- *@Entity
- * @ORM\Table(name="User")
+ * @ORM\Entity()
  */
 class Admin extends BaseUser
 {
-
     /**
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")

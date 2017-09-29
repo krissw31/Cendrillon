@@ -5,53 +5,20 @@
      <div class="container-fluid" id="main">
          <div class="row row-offcanvas row-offcanvas-left">
              <div class="col-md-3 col-lg-2 sidebar-offcanvas" id="sidebar" role="navigation">
-                 <ul class="nav flex-column pl-1">
-                     <li class="nav-item"><a class="nav-link" href="#">Menu</a></li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="#submenu1" data-toggle="collapse"
-                            data-target="#submenu1">Catégories posts▾</a>
-                         <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                             <li class="nav-item"><a class="nav-link" href= href="" >Amitié</a></li>
-                             <li class="nav-item"><a class="nav-link" href="/posts#amour">Amour</a></li>
-                             <li class="nav-item"><a class="nav-link" href="/posts#confiance">Confiance</a></li>
-                             <li class="nav-item"><a class="nav-link" href="/posts#sexo">Sexo</a></li>
-                         </ul>
-                     </li>
-                     <li class="nav-item">
-                         <a class="nav-link" href="#submenu2" data-toggle="collapse"
-                            data-target="#submenu2">Utilisateurs▾</a>
-                         <ul class="list-unstyled flex-column pl-3 collapse" id="submenu2" aria-expanded="false">
-                             <li class="nav-item"><a class="nav-link" href="#moderation">Gestion des posts</a></li>
-                             <li class="nav-item"><a class="nav-link" href="">Gestion des utilisateurs</a></li>
-                         </ul>
-                     </li>
-                     <li class="nav-item"><a class="nav-link" href="{{ path('chat') }}">Chat</a></li>
 
-
-                 </ul>
              </div>
              <!--/col-->
 
              <div class="col-md-9 col-lg-10 main">
 
 
-                 <!--toggle sidebar button
-                 <p class="hidden-md-up">
-                     <button type="button" class="btn btn-primary-outline btn-sm" data-toggle="offcanvas"><i class="fa fa-chevron-left"></i> Menu</button>
-                 </p>-->
 
                  <h1 class="sub-header mt-5">
                      Accueil
                  </h1>
                  <p class="lead hidden-xs-down">Informations générales du site Kurbys</p>
 
-                 <!--  <div class="alert alert-warning fade collapse" role="alert" id="myAlert">
-                       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                           <span aria-hidden="true">×</span>
-                           <span class="sr-only">Close</span>
-                       </button>
-                       <strong>Holy guacamole!</strong> It's free.. this is an example theme.
-                   </div>-->
+
 
                  <div class="row mb-3">
 
@@ -69,20 +36,7 @@
                          </div>
 
 
-                        <!-- <div class="panel panel-success">
-                             <div class="panel-heading">
-                                 Green Panel
-                             </div>
-                             <div class="panel-body">
-                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est
-                                     vitae
-                                     ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla
-                                     augue.</p>
-                             </div>
-                             <div class="panel-footer">
-                                 Panel Footer
-                             </div>
-                         </div>-->
+
                      </div>
 
 
@@ -305,11 +259,11 @@
          </div>
      </div>
 
-
+                 <a id="commentaires"></a>
      <hr>
 
      <!--////////////////COMMENTAIRES//////////////////-->
-     <a id="commentaires"></a>
+
      <h2 class="mt-5">Commentaires </h2>
      <h6>Nombre de commentaires :{{ nbComment }}</h6>
 
@@ -411,7 +365,7 @@
      </div>
 
 
-
+                 <a id="users"></a>
      <a id="layouts"></a>
 
 
@@ -419,7 +373,7 @@
 <!--///////////////////////////////////////////////UTILISATEURS////////////////////////////////////////////////-->
 
      <div class="clearfix"></div>
-     <a id="users"></a>
+
      <h2 class="mt-5">Utilisateurs </h2>
 
      <p class="lead hidden-xs-down">Nombre d'utilisateurs : {{ nb_user }}</p>
@@ -599,6 +553,7 @@
 
 
          </div>
+     </div>
         <!-- <div id="myfirstchart" style="height: 250px;background-color: #5eb5e0" ></div>-->
 
 
@@ -619,7 +574,7 @@
             "language":{
                 "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/French.json"}
 
-        } )};
+        } )});
     </script>
 
 {% endblock javascripts %}

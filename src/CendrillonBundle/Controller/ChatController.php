@@ -9,16 +9,16 @@ use CendrillonBundle\Entity\Chat;
 
 class ChatController extends Controller
 {
-    /**
-     * @Route("/chat", name="chat")
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function indexAction()
-    {
+/**
+ * @Route("/chat", name="chat")
+ * @return \Symfony\Component\HttpFoundation\Response
+ */
+public function indexAction()
+{
 
 
-        $chats = $this->getDoctrine()->getRepository("CendrillonBundle:Chat")->findAll();
+    $chats = $this->getDoctrine()->getRepository("CendrillonBundle:Chat")->findAll();
 
-        return $this->render('CendrillonBundle:Default:Chat.html.twig',["chats" => $chats ]);
-    }
+    return $this->render('CendrillonBundle:Default:Chat.html.twig',["chats" => $chats ]);
+}
 }
