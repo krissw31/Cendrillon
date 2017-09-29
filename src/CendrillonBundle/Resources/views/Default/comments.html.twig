@@ -2,7 +2,7 @@
  {% block body %}
 
 <div class="container">
-     <h2>Voici les commentaires pour le message:</h2>
+     <h2 class="sub-header mt-5">Voici les commentaires pour le message:</h2>
 
      <p>Message posté le {{ commentsPostDate |date('d/m/Y h:i:s') }} , par {{ commentsPostAuthor.userLogin }}:</p>
      <p>"{{ commentsPostContent }}"</p>
