@@ -18,6 +18,6 @@ class ConseillerController extends Controller
     {
 
         $conseillers = $this->getDoctrine()->getRepository("CendrillonBundle:Conseiller")->findAll();
-        return $this->render('CendrillonBundle:Default:conseiller.html.twig', array('conseillers' => $conseillers));
+        return $this->render('CendrillonBundle:Default:conseiller.html.twig', ['conseillers' => $conseillers]);
     }
 }

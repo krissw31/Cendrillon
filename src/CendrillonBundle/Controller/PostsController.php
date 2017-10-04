@@ -92,7 +92,7 @@ namespace CendrillonBundle\Controller;
 
             if ($form->isSubmitted() && $form->isValid()){
                 $em = $this->getDoctrine()->getManager();
-                $em->flush();
+                $em->flush(); //sauvegarder
 
                 return $this->redirectToRoute("post");
                 }

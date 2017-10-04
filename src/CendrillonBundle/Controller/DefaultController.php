@@ -38,16 +38,16 @@ class DefaultController extends Controller
 
         $nbUserOnlineMen = 0;
         $nbUserOnlineWomen = 0;
-        foreach ($usersOnline as $userOnline){
-            $user = $userOnline->getIDUser();
+        foreach ($usersOnline as $userOnline){ //on parcourt le tableau des utilisateurs connectés
+            $user = $userOnline->getIDUser(); // on stock leur id que l'on récupère.
             /**
              * @var $user User
              */
-            if ($user->getUserSexe() === self::GARCON){
+            if ($user->getUserSexe() === self::GARCON){ // on comptabilise le nombre de garçons
                 $nbUserOnlineMen++;
             }
             elseif ($user->getUserSexe() === self::FILLE){
-                $nbUserOnlineWomen++;
+                $nbUserOnlineWomen++; // on comptabilise le nombre de filles
             }
         }
 

@@ -9,12 +9,12 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PostsType extends AbstractType
+class PostsType extends AbstractType // classe qui permet de générer un formulaire
 {
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options) // methode qui génère les champs)
     {
         $builder
             ->add('post_date', null, ["label"=>"Date:"])

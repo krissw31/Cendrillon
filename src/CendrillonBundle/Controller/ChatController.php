@@ -17,7 +17,7 @@ public function indexAction()
 {
 
 
-    $chats = $this->getDoctrine()->getRepository("CendrillonBundle:Chat")->findAll();
+    $chats = $this->getDoctrine()->getRepository("CendrillonBundle:Chat")->findAll(); //récupération de chaque entrée de l'entité chat
 
     return $this->render('CendrillonBundle:Default:Chat.html.twig',["chats" => $chats ]);
 }
